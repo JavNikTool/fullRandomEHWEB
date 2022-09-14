@@ -5,24 +5,30 @@ body {
   background-size: cover;
 }
 
-.main_wrap {
-  background-color: rgb(128, 118, 118);
-  box-shadow: 5px 5px 13px rgb(26, 24, 24);
-  height: 800px;
-  width: 740px;
-  margin: 25px;
-  border: 2px solid black;
-  transition: all 0.5s;
-  padding: 5px;
-}
-.main_wrap:hover {
-  box-shadow: 5px 5px 13px rgb(78, 54, 90);
-}
-.main_wrap__title {
+.q1, .q2, .q3 {
   color: white;
   font-size: 18px;
   margin-left: 20px;
   margin-top: 20px;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.main_wrap {
+  background-color: rgba(84, 121, 181, 0.9);
+  box-shadow: 5px 5px 13px rgb(26, 24, 24);
+  max-height: 100%;
+  width: 740px;
+  margin: 25px;
+  border: 2px solid black;
+  padding: 5px;
+  transition: 0.5s;
+}
+.main_wrap:hover {
+  box-shadow: 5px 5px 13px rgb(78, 54, 90);
+  background-color: rgba(84, 121, 181, 0.85);
 }
 .main_wrap__form {
   margin-top: 20px;
@@ -30,6 +36,7 @@ body {
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 10px;
+  margin-left: 20px;
 }
 
 .wrap_element__dop-img {
@@ -39,6 +46,36 @@ body {
 }
 .wrap_element__dop-input {
   display: inline-block;
+}
+
+.sub_wrapp {
+  overflow: hidden;
+  transform: 0.5s;
+  height: 0px;
+}
+
+.active {
+  height: 100%;
+}
+
+.select {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  border: 1px solid white;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.select:hover {
+  transform: scale(0.9);
+  background-color: white;
+}
+
+.q2__input {
+  font-size: 24px;
+  color: white;
 }
 
 * {
