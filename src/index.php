@@ -12,68 +12,68 @@
 
 </div> -->
 <div class="main_wrap">
-    
-    <p class="q1">1. Выберите дополнения: <span class="select"></span></p>
+
+    <p class="questions">1. Выберите дополнения: <span class="select"></span></p>
     <div class="sub_wrapp active">
     <form action="server.php" method="POST" class="main_wrap__form"> 
         <div class="wrap_element">
-            <input class="wrap_element__dop-input" type="checkbox" id="1">
-            <label for="1">
+            <input class="wrap_element__dop-input" type="checkbox" checked id="checkbox1">
+            <label for="checkbox1">
                 <img class="wrap_element__dop-img" src="img/dops/classick.png" alt="">
             </label>
         </div>
         <div class="wrap_element">
-            <input class="wrap_element__dop-input" type="checkbox" id="2">
-            <label for="2">
+            <input class="wrap_element__dop-input" type="checkbox" id="checkbox2">
+            <label for="checkbox2">
                 <img class="wrap_element__dop-img" src="img/dops/dop_1.png" alt="">
             </label>
         </div>
         <div class="wrap_element">
-            <input class="wrap_element__dop-input" type="checkbox" id="3">
-           <label for="3">
+            <input class="wrap_element__dop-input" type="checkbox" id="checkbox3">
+           <label for="checkbox3">
             <img class="wrap_element__dop-img" src="img/dops/dop_2.png" alt="">
            </label>
         </div>
         <div class="wrap_element">
-            <input class="wrap_element__dop-input" type="checkbox" id="4">
-            <label for="4">
+            <input class="wrap_element__dop-input" type="checkbox" id="checkbox4">
+            <label for="checkbox4">
                 <img class="wrap_element__dop-img" src="img/dops/dop_3.png" alt="">
             </label>
         </div>
         <div class="wrap_element">
-            <input class="wrap_element__dop-input" type="checkbox" id="5">
-            <label for="5">
+            <input class="wrap_element__dop-input" type="checkbox" id="checkbox5">
+            <label for="checkbox5">
                 <img class="wrap_element__dop-img" src="img/dops/dop_4.png" alt="">
             </label>
         </div>
         <div class="wrap_element">
-            <input class="wrap_element__dop-input" type="checkbox" id="6">
-            <label for="6">
+            <input class="wrap_element__dop-input" type="checkbox" id="checkbox6">
+            <label for="checkbox6">
                 <img class="wrap_element__dop-img" src="img/dops/dop_5.png" alt="">
             </label>
         </div>
         <div class="wrap_element">
-            <input class="wrap_element__dop-input" type="checkbox" id="7">
-            <label for="7">
+            <input class="wrap_element__dop-input" type="checkbox" id="checkbox7">
+            <label for="checkbox7">
                 <img class="wrap_element__dop-img" src="img/dops/dop_6.png" alt="">
             </label>
         </div>
         <div class="wrap_element">
-            <input class="wrap_element__dop-input" type="checkbox" id="8">
-            <label for="8">
+            <input class="wrap_element__dop-input" type="checkbox" id="checkbox8">
+            <label for="checkbox8">
                 <img class="wrap_element__dop-img" src="img/dops/dop_7.png" alt="">
             </label>
         </div>
         <div class="wrap_element">
-            <input class="wrap_element__dop-input" type="checkbox" id="9">
-            <label for="9">
+            <input class="wrap_element__dop-input" type="checkbox" id="checkbox9">
+            <label for="checkbox9">
                 <img class="wrap_element__dop-img" src="img/dops/dop_8.png" alt="">
             </label>
         </div>
     </form>
     </div>
 
-    <p class="q2">2. Играем с "прелюдиями"? <span class="select"></span></p>
+    <p class="questions">2. Играем с "прелюдиями"? <span class="select"></span></p>
     <div class="sub_wrapp">
         <form action="server.php" method="POST" class="main_wrap__form"> 
             <input class="wrap_element__dop-input" type="checkbox" id="yes">
@@ -83,7 +83,7 @@
         </form>
     </div>
 
-    <p class="q3">3. Количество игроков <span class="select"></span></p>
+    <p class="questions">3. Количество игроков <span class="select"></span></p>
     <div class="sub_wrapp">
         <form action="server.php" method="POST" class="main_wrap__form"> 
            

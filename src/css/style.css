@@ -5,15 +5,16 @@ body {
   background-size: cover;
 }
 
-.q1, .q2, .q3 {
+.questions {
   color: white;
   font-size: 18px;
   margin-left: 20px;
   margin-top: 20px;
-  cursor: default;
   display: flex;
   align-items: center;
   gap: 5px;
+  cursor: pointer;
+  width: max-content;
 }
 
 .main_wrap {
@@ -43,14 +44,16 @@ body {
   width: 150px;
   height: 150px;
   padding-left: 5px;
+  cursor: pointer;
 }
 .wrap_element__dop-input {
   display: inline-block;
+  cursor: pointer;
 }
 
 .sub_wrapp {
   overflow: hidden;
-  transform: 0.5s;
+  transition: 0.5s;
   height: 0px;
 }
 
@@ -67,10 +70,6 @@ body {
   border: 1px solid white;
   cursor: pointer;
   transition: 0.4s;
-}
-.select:hover {
-  transform: scale(0.9);
-  background-color: white;
 }
 
 .q2__input {
