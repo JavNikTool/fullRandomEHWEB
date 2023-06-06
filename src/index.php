@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>FullRandomEH</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
 </div> -->
 <div class="main_wrap">
     
-    <p class="q1">1.Выберите дополнения: <span class="select"></span></p>
+    <p class="q1">1. Выберите дополнения: <span class="select"></span></p>
     <div class="sub_wrapp active">
     <form action="server.php" method="POST" class="main_wrap__form"> 
         <div class="wrap_element">
@@ -73,7 +73,7 @@
     </form>
     </div>
 
-    <p class="q2">2.Играем с "прелюдиями"? <span class="select"></span></p>
+    <p class="q2">2. Играем с "прелюдиями"? <span class="select"></span></p>
     <div class="sub_wrapp">
         <form action="server.php" method="POST" class="main_wrap__form"> 
             <input class="wrap_element__dop-input" type="checkbox" id="yes">
@@ -83,7 +83,7 @@
         </form>
     </div>
 
-    <p class="q3">3.Количество игроков <span class="select"></span></p>
+    <p class="q3">3. Количество игроков <span class="select"></span></p>
     <div class="sub_wrapp">
         <form action="server.php" method="POST" class="main_wrap__form"> 
            
