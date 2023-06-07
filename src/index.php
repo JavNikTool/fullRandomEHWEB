@@ -85,8 +85,9 @@
 
     <p class="questions">3. Количество игроков <span class="select"></span></p>
     <div class="sub_wrapp">
-        <form action="server.php" method="POST" class="main_wrap__form"> 
-           
+        <form action="server.php" method="POST" class="main_wrap__form">
+            <input type="range" min="1" max="8" class="slider" id="myRange">
+            <output class="slider_value"></output>
         </form>
     </div>
 </div>
