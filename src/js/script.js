@@ -10,9 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
         slider_value = document.querySelector('.slider_value'),
         slider = document.querySelector('.slider');
 
+    let s = document.querySelector('#subm');
+    let forms = document.querySelectorAll('.main_wrap__form');
 
 
 
+    s.addEventListener('click', () => {
+        forms.forEach(e => {
+            e.submit();
+        })
+    })
 
 
     questions.forEach((e,i) => {
