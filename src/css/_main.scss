@@ -3,6 +3,7 @@ body{
   height: 100vh;
   background: url(../img/main_bg.jpg) no-repeat;
   background-size: cover;
+  position: relative;
 }
 .questions{
   @include qStyle;
@@ -20,14 +21,23 @@ body{
     box-shadow:5px 5px 13px rgb(78, 54, 90);
     background-color: rgba(84, 121, 181, 0.85);
   }
-  &__form{
+  /*&__form{
     margin-top: 20px;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     gap:10px;
     margin-left: 20px;
+  }*/
+  &__form{
+    margin: 15px;
+    position: relative;
   }
+}
+.main_wrap__form:first-child .sub_wrapp{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 .wrap_element{
   &__dop-img{
@@ -73,4 +83,36 @@ body{
 }
 .active:last-child{
   padding-bottom: 20px;
+}
+.submit{
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 10px;
+  position: absolute;
+  right: 0px;
+  bottom:5px;
+  cursor: pointer;
+}
+.res_wrap{
+  background-color: #5c73b1;
+  border-radius: 20px;
+  width: 300px;
+  height: max-content;
+  padding: 20px;
+  position: absolute;
+  display: none;
+  justify-content: space-around;
+  left: 48%;
+  top: 40%;
+  color:white;
+  font-size: 20px;
+  &__close{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+  }
+}
+.active2{
+  display: flex;
 }

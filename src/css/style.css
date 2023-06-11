@@ -3,6 +3,7 @@ body {
   height: 100vh;
   background: url(../img/main_bg.jpg) no-repeat;
   background-size: cover;
+  position: relative;
 }
 
 .questions {
@@ -15,6 +16,7 @@ body {
   gap: 5px;
   cursor: pointer;
   width: max-content;
+  margin-bottom: 10px;
 }
 
 .main_wrap {
@@ -26,18 +28,28 @@ body {
   border: 2px solid black;
   padding: 5px;
   transition: 0.5s;
+  /*&__form{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap:10px;
+    margin-left: 20px;
+  }*/
 }
 .main_wrap:hover {
   box-shadow: 5px 5px 13px rgb(78, 54, 90);
   background-color: rgba(84, 121, 181, 0.85);
 }
 .main_wrap__form {
-  margin-top: 20px;
+  margin: 15px;
+  position: relative;
+}
+
+.main_wrap__form:first-child .sub_wrapp {
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-left: 20px;
+  gap: 5px;
 }
 
 .wrap_element__dop-img {
@@ -85,6 +97,41 @@ body {
 
 .active:last-child {
   padding-bottom: 20px;
+}
+
+.submit {
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 10px;
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+  cursor: pointer;
+}
+
+.res_wrap {
+  background-color: #5c73b1;
+  border-radius: 20px;
+  width: 300px;
+  height: max-content;
+  padding: 20px;
+  position: absolute;
+  display: none;
+  justify-content: space-around;
+  left: 48%;
+  top: 40%;
+  color: white;
+  font-size: 20px;
+}
+.res_wrap__close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.active2 {
+  display: flex;
 }
 
 * {

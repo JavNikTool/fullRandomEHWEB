@@ -6,22 +6,55 @@ document.addEventListener('DOMContentLoaded', () => {
         questions_display = document.querySelectorAll('.sub_wrapp'),
         questions_display_first = document.querySelector('.sub_wrapp'),
         questions_circle = document.querySelectorAll('.select'),
-        first_checkbox = document.getElementById('checkbox1'),
+        prelude = document.querySelectorAll('.prelude'),
         slider_value = document.querySelector('.slider_value'),
-        slider = document.querySelector('.slider');
+        slider = document.querySelector('.slider'),
+        submit = document.querySelector('.submit'),
+        resWindow = document.querySelector('.res_wrap');
 
-    let s = document.querySelector('#subm');
-    let forms = document.querySelectorAll('.main_wrap__form');
+    $('.main_wrap__form').submit(function (e){
+        e.preventDefault();
+        resWindow.classList.add('active2');
+        console.log(123)
+        var form_data = $(this).serialize();
+        $.ajax({
+            type: "POST", // Метод отправки
+            url: "app/server.php", // Путь до php файла отправителя
+            data: form_data,
+            dataType: 'json', // указываем, что ждем ответ в формате JSON
+            success: function(response) {
+                AjaxResp(response);
+            },
+            error: function(response) { // обработчик ошибок запроса
+                console.log(response); // выводим информацию об ошибке в консоль
+            },
+        });
 
-
-
-    s.addEventListener('click', () => {
-        forms.forEach(e => {
-            e.submit();
-        })
     })
 
+    function AjaxResp(data){
+        let dataTest = document.querySelector('.ajax');
+        if(data.length == 2){
+            console.log(data[1])
+            dataTest.innerHTML = 'Ваши сыщики: ' + "<br>" + data[1] + "<br>" + "<br>" + 'Древний, которого предстоит одолеть:' + "<br>" + data[0];
+        }else{
+            dataTest.innerHTML = 'Ваши сыщики: ' + "<br>" + data[2] + "<br>" + "<br>" + 'Древний, которого предстоит одолеть:' + "<br>" + data[1] + "<br>" + "<br>" + 'Прелюдия:'  + "<br>" + data[0];
+        }
+    }
 
+    $('.res_wrap__close').click(function (){
+        resWindow.classList.remove('active2')
+    })
+    prelude.forEach(element => {
+        element.addEventListener('click', () => {
+                if(prelude[1].checked){
+                 prelude[0].checked = false;
+                }
+            if(prelude[0].checked){
+                prelude[1].checked = false;
+            }
+        })
+    })
     questions.forEach((e,i) => {
         let addHover = function () {
             questions_circle.forEach((elem, i2) =>{
@@ -30,16 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 }
             })
-        }
+        };
         let remHover = function (){
             questions_circle.forEach((elem, i2) =>{
                 if(i == i2){
                     elem.style.cssText = 'transform: scale(1); background-color:none;';
                 }
             })
-        }
-        e.addEventListener('mouseover', addHover)
-        e.addEventListener('mouseout', remHover)
+        };
+        e.addEventListener('mouseover', addHover);
+        e.addEventListener('mouseout', remHover);
 
         if(questions_display_first.classList.contains('active'))
         {
@@ -48,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     elem.style.cssText = 'transform: scale(0.9); background-color:white;';
                 }
             })
-        }
+        };
         e.addEventListener('click',() => {
             questions_display.forEach((elem,i2) => {
                 if(i == i2){
@@ -63,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         })
                     }
                     else {
-                        e.addEventListener('mouseout', remHover)
+                        e.addEventListener('mouseout', remHover);
                     }
                 }
             })
@@ -72,10 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     slider_value.textContent = slider.value;
     slider.addEventListener('input', e => {
-        slider_value.textContent = e.target.value
+        slider_value.textContent = e.target.value;
     })
 
-    if(first_checkbox.checked === false)
-        first_checkbox.checked = true;
 
 })
