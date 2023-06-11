@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     $('.main_wrap__form').submit(function (e){
         e.preventDefault();
         resWindow.classList.add('active2');
-        console.log(123)
         var form_data = $(this).serialize();
         $.ajax({
             type: "POST", // Метод отправки
@@ -23,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: form_data,
             dataType: 'json', // указываем, что ждем ответ в формате JSON
             success: function(response) {
+                console.log();
                 AjaxResp(response);
             },
             error: function(response) { // обработчик ошибок запроса
@@ -34,11 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function AjaxResp(data){
         let dataTest = document.querySelector('.ajax');
-        if(data.length == 2){
-            console.log(data[1])
-            dataTest.innerHTML = 'Ваши сыщики: ' + "<br>" + data[1] + "<br>" + "<br>" + 'Древний, которого предстоит одолеть:' + "<br>" + data[0];
+        if('preludes' in data){
+            dataTest.innerHTML = 'Ваши сыщики: ' + "<br>" + data['detectives'] + "<br>" + "<br>" + 'Древний, которого предстоит одолеть:' + "<br>" + data['monster'] + "<br>" + "<br>" + 'Прелюдия:'  + "<br>" + data['preludes'];
         }else{
-            dataTest.innerHTML = 'Ваши сыщики: ' + "<br>" + data[2] + "<br>" + "<br>" + 'Древний, которого предстоит одолеть:' + "<br>" + data[1] + "<br>" + "<br>" + 'Прелюдия:'  + "<br>" + data[0];
+            dataTest.innerHTML = 'Ваши сыщики: ' + "<br>" + data['detectives'] + "<br>" + "<br>" + 'Древний, которого предстоит одолеть:' + "<br>" + data['monster'];
         }
     }
 

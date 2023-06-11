@@ -50,6 +50,6 @@ if(count($PreludesArr) > 1){
 $randomMonster = GetRandomValue($MonstersArr, true);
 $randomDetectiv = GetRandomValue($DetectivesArr);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $resualt = isset($randomPreludes) ? [$randomPreludes, $randomMonster, $randomDetectiv] : [$randomMonster, $randomDetectiv];
+    $resualt = isset($randomPreludes) ? ['preludes' => $randomPreludes, 'monster' => $randomMonster, 'detectives' => $randomDetectiv] : ['monster' => $randomMonster,'detectives' => $randomDetectiv];
     echo json_encode($resualt);
 }
