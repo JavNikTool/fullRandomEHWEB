@@ -6,7 +6,16 @@ body{
   position: relative;
 }
 .questions{
-  @include qStyle;
+  color:white;
+  font-size: 18px;
+  margin-left: 20px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  width: max-content;
+  margin-bottom: 10px;
 }
 .main_wrap{
   background-color: rgba(84, 121, 181, 0.9);
@@ -21,47 +30,38 @@ body{
     box-shadow:5px 5px 13px rgb(78, 54, 90);
     background-color: rgba(84, 121, 181, 0.85);
   }
-  /*&__form{
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap:10px;
-    margin-left: 20px;
-  }*/
   &__form{
     margin: 15px;
     position: relative;
   }
 }
-.main_wrap__form:first-child .sub_wrapp{
+.main_wrap__form:first-child .questions_body{
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
-.wrap_element{
-  &__dop-img{
-    width: 150px;
-    height: 150px;
-    padding-left: 5px;
-    cursor: pointer;
-  }
-  &__dop-input{
-    display: inline-block;
-    cursor: pointer;
-  }
-}
 
-.sub_wrapp{
+.questions_body{
   overflow: hidden;
-  /*transition: 0.5s;*/
   height: 0px;
+  &__element{
+    &-img{
+      width: 150px;
+      height: 150px;
+      padding-left: 5px;
+      cursor: pointer;
+    }
+    &-input{
+      display: inline-block;
+      cursor: pointer;
+    }
+  }
 }
 .active{
   height: 100%;
 }
 
-.select{
+.select-btn{
   content: "";
   display: inline-block;
   width: 15px;
@@ -77,7 +77,7 @@ body{
   color:white;
   cursor: pointer;
 }
-.slider_value{
+output{
   color: white;
   font-size: 18px;
 }
@@ -113,6 +113,6 @@ body{
     cursor: pointer;
   }
 }
-.active2{
+.res-active{
   display: flex;
 }

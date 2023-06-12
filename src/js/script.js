@@ -3,58 +3,83 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     let questions = document.querySelectorAll('.questions'),
-        questions_display = document.querySelectorAll('.sub_wrapp'),
-        questions_display_first = document.querySelector('.sub_wrapp'),
-        questions_circle = document.querySelectorAll('.select'),
-        prelude = document.querySelectorAll('.prelude'),
-        slider_value = document.querySelector('.slider_value'),
-        slider = document.querySelector('.slider'),
-        submit = document.querySelector('.submit'),
+        questions_display = document.querySelectorAll('.questions_body'),
+        questions_display_first = document.querySelector('.questions_body'),
+        questions_circle = document.querySelectorAll('.select-btn'),
+        playersCountOut = document.getElementsByTagName("output"),
+        playersCount = document.querySelector('.playersCount'),
         resWindow = document.querySelector('.res_wrap');
 
+
+    // функция-обработчик ответа с сервера, выводим результирующие данные на страницу
+    function AjaxResp(data){
+        let htmlRes = document.querySelector('.res_wrap__value');
+        let preludes = 'preludes' in data ? `Прелюдия: <br> ${data['preludes']}` : ''; // делаем проверку, игра будет с прелюдиями или нет
+
+        htmlRes.innerHTML =
+        `${data['onePlayer'] ? 'Ваш сыщик:' : 'Ваши сыщики:'} <br>
+        ${data['detectives']}`  + "<br>" + "<br>" +
+        `Древний, которого предстоит одолеть: <br>
+        ${data['monster']}` + "<br>" + "<br>" + preludes;
+    }
+
+    // отправляем данные с формы на сервер
     $('.main_wrap__form').submit(function (e){
         e.preventDefault();
-        resWindow.classList.add('active2');
-        var form_data = $(this).serialize();
+        resWindow.classList.add('res-active');
+        let form_data = $(this).serialize();
         $.ajax({
-            type: "POST", // Метод отправки
-            url: "app/server.php", // Путь до php файла отправителя
+            type: "POST", // метод запроса
+            url: "app/server.php", // адрес
             data: form_data,
-            dataType: 'json', // указываем, что ждем ответ в формате JSON
+            dataType: 'json',
             success: function(response) {
-                console.log();
-                AjaxResp(response);
-            },
-            error: function(response) { // обработчик ошибок запроса
-                console.log(response); // выводим информацию об ошибке в консоль
+                AjaxResp(response); // обработка ответа
             },
         });
 
     })
 
-    function AjaxResp(data){
-        let dataTest = document.querySelector('.ajax');
-        if('preludes' in data){
-            dataTest.innerHTML = 'Ваши сыщики: ' + "<br>" + data['detectives'] + "<br>" + "<br>" + 'Древний, которого предстоит одолеть:' + "<br>" + data['monster'] + "<br>" + "<br>" + 'Прелюдия:'  + "<br>" + data['preludes'];
-        }else{
-            dataTest.innerHTML = 'Ваши сыщики: ' + "<br>" + data['detectives'] + "<br>" + "<br>" + 'Древний, которого предстоит одолеть:' + "<br>" + data['monster'];
+    //При нажатии esc закрываем форму с результатами
+    $(document).on('keydown', (e) => {
+        if(e.key == 'Escape'){
+            resWindow.classList.remove('res-active')
         }
-    }
+    })
+    //При клике на крестик закрываем форму с результатами
+    $('.res_wrap__close').click(() => {
+        resWindow.classList.remove('res-active')
+    })
 
-    $('.res_wrap__close').click(function (){
-        resWindow.classList.remove('active2')
+    //выводим количество игроков
+    playersCountOut[0].textContent = playersCount.value;
+    playersCount.addEventListener('input', e => {
+        playersCountOut[0].textContent = e.target.value;
     })
-    prelude.forEach(element => {
-        element.addEventListener('click', () => {
-                if(prelude[1].checked){
-                 prelude[0].checked = false;
-                }
-            if(prelude[0].checked){
-                prelude[1].checked = false;
-            }
-        })
-    })
+
+
+    // различная косметика
+
     questions.forEach((e,i) => {
+        e.addEventListener('click',() => {
+            questions_display.forEach((elem,i2) => {
+                if(i == i2){
+                    elem.classList.toggle('active');
+                    if(elem.classList.contains('active'))
+                    {
+                        questions_circle.forEach((elem, i2) =>{
+                            if(i == i2){
+                                e.removeEventListener('mouseout', remHover)
+                                elem.style.cssText = 'transform: scale(0.9); background-color:white;';
+                            }
+                        })
+                    }
+                    else {
+                        e.addEventListener('mouseout', remHover);
+                    }
+                }
+            })
+        })
         let addHover = function () {
             questions_circle.forEach((elem, i2) =>{
                 if(i == i2){
@@ -81,31 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
         };
-        e.addEventListener('click',() => {
-            questions_display.forEach((elem,i2) => {
-                if(i == i2){
-                    elem.classList.toggle('active');
-                    if(elem.classList.contains('active'))
-                    {
-                        questions_circle.forEach((elem, i2) =>{
-                            if(i == i2){
-                                e.removeEventListener('mouseout', remHover)
-                                elem.style.cssText = 'transform: scale(0.9); background-color:white;';
-                            }
-                        })
-                    }
-                    else {
-                        e.addEventListener('mouseout', remHover);
-                    }
-                }
-            })
-        })
+
     })
-
-    slider_value.textContent = slider.value;
-    slider.addEventListener('input', e => {
-        slider_value.textContent = e.target.value;
-    })
-
-
 })

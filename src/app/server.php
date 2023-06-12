@@ -2,11 +2,14 @@
 require_once 'fakeDB/fakeDB.php';
 $_POST['dop0'] = 'on';
 
-$PlayersCount = $_POST['number_of_players'] ?? '';
+$PlayersCount = $_POST['playersCount'] ?? '';
 $DetectivesArr = [];
 $MonstersArr = [];
 $PreludesArr = [];
 
+if($PlayersCount == 1){
+    $onePlayer = true;
+}
 
 for ($i = 0; $i <= 8; $i++)
 {
@@ -46,10 +49,11 @@ if(count($PreludesArr) > 1){
         $randomPreludes = GetRandomValue($PreludesArr, true);
     }
 }
-
 $randomMonster = GetRandomValue($MonstersArr, true);
 $randomDetectiv = GetRandomValue($DetectivesArr);
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $resualt = isset($randomPreludes) ? ['preludes' => $randomPreludes, 'monster' => $randomMonster, 'detectives' => $randomDetectiv] : ['monster' => $randomMonster,'detectives' => $randomDetectiv];
+    $resualt = isset($randomPreludes) ? ['onePlayer' => $onePlayer ?? false, 'preludes' => $randomPreludes, 'monster' => $randomMonster, 'detectives' => $randomDetectiv] : ['onePlayer' => $onePlayer ?? false, 'monster' => $randomMonster,'detectives' => $randomDetectiv];
     echo json_encode($resualt);
 }
